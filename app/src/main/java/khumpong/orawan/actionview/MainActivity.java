@@ -3,28 +3,63 @@ package khumpong.orawan.actionview;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
-        private String urlString = "http://www.inspectorrta.org/IGD2017/";
+    private String urlString = "http://www.inspectorrta.org/IGD2017/";
+    private int anInt = 0;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState != null){
+            myIntentToActionView();
+        }
+
+        progressBar = (ProgressBar) findViewById(R.id.myProcessBar);
+        progressBar.setProgress(0);
+
+       myLoop();
+
+    }   //main Method
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    private void myDelay() {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                myIntentToActionView();
+                myLoop();
             }
-        }, 3000);
+        }, 200);
+    }
 
+    private void myLoop() {
+        //Todo
+        //Increase Integer
+        anInt += 5;
+        progressBar.setProgress(anInt);
 
-    }   //main Method
+        if (anInt > 100) {
+            myIntentToActionView();
+        }
+
+        progressBar .setProgress(anInt);
+
+        myDelay();
+    }
 
     private void myIntentToActionView() {
         Intent intent = new Intent(Intent.ACTION_VIEW);

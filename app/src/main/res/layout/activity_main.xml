@@ -8,17 +8,29 @@
 
     <!--Wallpaper-->
     <ImageView
-        android:src="@drawable/logo2"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo2" />
 
     <!--Logo-->
     <ImageView
-        android:src="@drawable/logo"
-        android:layout_centerInParent="true"
+        android:id="@+id/imvLogo"
         android:layout_width="@dimen/logo"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo" />
 
+    <!--Process Bar-->
+    <ProgressBar
+        android:background="#82ffffff"
+        android:layout_below="@+id/imvLogo"
+        android:id="@+id/myProcessBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="@dimen/logo"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:max="100"
+        android:progress="20"/>
 
 </RelativeLayout>
